@@ -44,6 +44,26 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var optionsJSON = localStorage.getItem('options');
+      var options = JSON.parse(optionsJSON);
+
+      if (options) {
+        this.setState(function () {
+          return {
+            options: options
+          };
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var optionsJSON = JSON.stringify(this.state.options);
+      localStorage.setItem('options', optionsJSON);
+    }
+  }, {
     key: "handleDeleteOptions",
     value: function handleDeleteOptions() {
       this.setState({
