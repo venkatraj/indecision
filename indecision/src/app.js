@@ -1,1 +1,7 @@
-console.log('app.js is running...ok?');
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  React.createElement('h1', null, 'Hello, React'),
+  document.getElementById('app')
+);
