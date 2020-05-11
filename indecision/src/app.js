@@ -1,7 +1,4 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  React.createElement('h1', null, 'Hello, React'),
-  document.getElementById('app')
-);
+ReactDOM.render(<h1>Hello, React and JSX!</h1>, document.getElementById('app'));
