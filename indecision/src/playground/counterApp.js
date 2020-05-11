@@ -1,7 +1,7 @@
 class CounterApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0 };
+    this.state = { count: props.count };
     this.handleDecrement = this.handleDecrement.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleReset = this.handleReset.bind(this);
@@ -30,5 +30,9 @@ class CounterApp extends React.Component {
     );
   }
 }
+
+CounterApp.defaultProps = {
+  count: 0,
+};
 
 ReactDOM.render(<CounterApp />, document.getElementById('app'));

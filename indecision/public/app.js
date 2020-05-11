@@ -37,7 +37,7 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_assertThisInitialized(_this));
     _this.handleDecisionMaking = _this.handleDecisionMaking.bind(_assertThisInitialized(_this));
     _this.state = {
-      options: ['One', 'Two']
+      options: props.options
     };
     return _this;
   }
@@ -75,7 +75,6 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, {
-        title: "Indecision App",
         subtitle: "Put your life in the handles of a computer!"
       }), /*#__PURE__*/React.createElement(Action, {
         hasOptions: this.state.options.length > 0,
@@ -92,8 +91,16 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
+IndecisionApp.defaultProps = {
+  options: []
+};
+
 var Header = function Header(props) {
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, props.title), /*#__PURE__*/React.createElement("h2", null, props.subtitle));
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, props.title), props.subtitle && /*#__PURE__*/React.createElement("h2", null, props.subtitle));
+};
+
+Header.defaultProps = {
+  title: 'Indecision App'
 };
 
 var Action = function Action(props) {
