@@ -59,9 +59,11 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      var optionsJSON = JSON.stringify(this.state.options);
-      localStorage.setItem('options', optionsJSON);
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.options.length !== this.state.options.length) {
+        var optionsJSON = JSON.stringify(this.state.options);
+        localStorage.setItem('options', optionsJSON);
+      }
     }
   }, {
     key: "handleDeleteOptions",
@@ -146,7 +148,7 @@ var Action = function Action(props) {
 var Options = function Options(props) {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
     onClick: props.handleDeleteOptions
-  }, "Remove All"), /*#__PURE__*/React.createElement("ol", null, props.options.map(function (option, index) {
+  }, "Remove All"), props.options.length === 0 && /*#__PURE__*/React.createElement("p", null, "Add some tasks to get started!"), /*#__PURE__*/React.createElement("ol", null, props.options.map(function (option, index) {
     return /*#__PURE__*/React.createElement(Option, {
       key: option,
       optionText: option,
