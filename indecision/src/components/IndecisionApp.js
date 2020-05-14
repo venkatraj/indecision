@@ -3,10 +3,12 @@ import Header from './Header';
 import Action from './Action';
 import Options from './Options';
 import AddOption from './AddOption';
+import OptionModal from './OptionModal';
 
 class IndecisionApp extends Component {
   state = {
-    options: this.props.options,
+    options: [],
+    selectedOption: null,
   };
 
   componentDidMount() {
@@ -51,11 +53,15 @@ class IndecisionApp extends Component {
   handleDecisionMaking = () => {
     const { options } = this.state;
     const randomOption = Math.floor(Math.random() * options.length);
-    console.log(options[randomOption]);
+    this.setState({ selectedOption: options[randomOption] });
+  };
+
+  closeModal = () => {
+    this.setState({ selectedOption: null });
   };
 
   render() {
-    const { options } = this.state;
+    const { options, selectedOption } = this.state;
     return (
       <div>
         <Header subtitle="Put your life in the handles of a computer!" />
@@ -69,6 +75,10 @@ class IndecisionApp extends Component {
           handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption handleAddOption={this.handleAddOption} />
+        <OptionModal
+          selectedOption={selectedOption}
+          closeModal={this.closeModal}
+        />
       </div>
     );
   }
