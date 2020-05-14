@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 
 class AddOption extends Component {
-  constructor(props) {
-    super(props);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.state = {
-      error: null,
-    };
-  }
+  state = {
+    error: null,
+  };
 
-  handleFormSubmit(e) {
+  handleFormSubmit = (e) => {
     e.preventDefault();
     const { handleAddOption } = this.props;
     const optionText = e.target.elements.option.value.trim();
@@ -18,7 +14,7 @@ class AddOption extends Component {
       e.target.elements.option.value = '';
     }
     this.setState({ error });
-  }
+  };
 
   render() {
     const { error } = this.state;

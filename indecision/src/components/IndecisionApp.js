@@ -5,16 +5,9 @@ import Options from './Options';
 import AddOption from './AddOption';
 
 class IndecisionApp extends Component {
-  constructor(props) {
-    super(props);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handleDecisionMaking = this.handleDecisionMaking.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.state = {
-      options: props.options,
-    };
-  }
+  state = {
+    options: this.props.options,
+  };
 
   componentDidMount() {
     const optionsJSON = localStorage.getItem('options');
@@ -32,17 +25,17 @@ class IndecisionApp extends Component {
     }
   }
 
-  handleDeleteOptions() {
+  handleDeleteOptions = () => {
     this.setState({ options: [] });
-  }
+  };
 
-  handleDeleteOption(optionToRemove) {
+  handleDeleteOption = (optionToRemove) => {
     this.setState((prevState) => ({
       options: prevState.options.filter((option) => option !== optionToRemove),
     }));
-  }
+  };
 
-  handleAddOption(optionText) {
+  handleAddOption = (optionText) => {
     const { options } = this.state;
     if (!optionText) {
       return 'Enter a valid option';
@@ -53,13 +46,13 @@ class IndecisionApp extends Component {
       options: prevState.options.concat(optionText),
     }));
     return null;
-  }
+  };
 
-  handleDecisionMaking() {
+  handleDecisionMaking = () => {
     const { options } = this.state;
     const randomOption = Math.floor(Math.random() * options.length);
     console.log(options[randomOption]);
-  }
+  };
 
   render() {
     const { options } = this.state;
