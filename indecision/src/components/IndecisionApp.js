@@ -15,6 +15,7 @@ class IndecisionApp extends Component {
       options: props.options,
     };
   }
+
   componentDidMount() {
     const optionsJSON = localStorage.getItem('options');
     const options = JSON.parse(optionsJSON);
@@ -22,46 +23,55 @@ class IndecisionApp extends Component {
       this.setState(() => ({ options }));
     }
   }
+
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.options.length !== this.state.options.length) {
-      const optionsJSON = JSON.stringify(this.state.options);
+    const { options } = this.state;
+    if (prevState.options.length !== options.length) {
+      const optionsJSON = JSON.stringify(options);
       localStorage.setItem('options', optionsJSON);
     }
   }
+
   handleDeleteOptions() {
     this.setState({ options: [] });
   }
+
   handleDeleteOption(optionToRemove) {
     this.setState((prevState) => ({
       options: prevState.options.filter((option) => option !== optionToRemove),
     }));
   }
+
   handleAddOption(optionText) {
+    const { options } = this.state;
     if (!optionText) {
       return 'Enter a valid option';
-    } else if (this.state.options.includes(optionText)) {
+    } else if (options.includes(optionText)) {
       return 'Option already exists';
-    } else {
-      this.setState((prevState) => ({
-        options: prevState.options.concat(optionText),
-      }));
-      return null;
     }
+    this.setState((prevState) => ({
+      options: prevState.options.concat(optionText),
+    }));
+    return null;
   }
+
   handleDecisionMaking() {
-    const randomOption = Math.floor(Math.random() * this.state.options.length);
-    alert(this.state.options[randomOption]);
+    const { options } = this.state;
+    const randomOption = Math.floor(Math.random() * options.length);
+    console.log(options[randomOption]);
   }
+
   render() {
+    const { options } = this.state;
     return (
       <div>
         <Header subtitle="Put your life in the handles of a computer!" />
         <Action
-          hasOptions={this.state.options.length > 0}
+          hasOptions={options.length > 0}
           handleDecisionMaking={this.handleDecisionMaking}
         />
         <Options
-          options={this.state.options}
+          options={options}
           handleDeleteOptions={this.handleDeleteOptions}
           handleDeleteOption={this.handleDeleteOption}
         />

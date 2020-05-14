@@ -2,16 +2,17 @@ import React from 'react';
 import Option from './Option';
 
 const Options = (props) => {
+  const { options, handleDeleteOption, handleDeleteOptions } = props;
   return (
     <div>
-      <button onClick={props.handleDeleteOptions}>Remove All</button>
-      {props.options.length === 0 && <p>Add some tasks to get started!</p>}
+      <button onClick={handleDeleteOptions}>Remove All</button>
+      {options.length === 0 && <p>Add some tasks to get started!</p>}
       <ol>
-        {props.options.map((option, index) => (
+        {options.map((option, index) => (
           <Option
             key={option}
             optionText={option}
-            handleDeleteOption={props.handleDeleteOption}
+            handleDeleteOption={handleDeleteOption}
           />
         ))}
       </ol>
