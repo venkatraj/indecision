@@ -21,7 +21,7 @@ class AddOption extends Component {
     return (
       <div>
         {error && <p>{error}</p>}
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} className="add-option">
           <input type="text" name="option" />
           <button className="button">Add Option</button>
         </form>

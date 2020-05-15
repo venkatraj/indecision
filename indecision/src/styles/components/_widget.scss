@@ -1,0 +1,45 @@
+.widget {
+  background-color: $widget-bg;
+  margin-bottom: $xl-size;
+}
+.widget-header {
+  background-color: $widget-header-bg;
+  color: $light-blue;
+  display: flex;
+  justify-content: space-between;
+  padding: $m-size;
+}
+
+.widget-header__title {
+  margin: 0;
+}
+
+.widget ol {
+  margin: 0;
+  padding: 0;
+}
+
+.widget__option {
+  border-bottom: 1px solid $body-bg;
+  color: $light-blue;
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-between;
+  padding: $l-size;
+}
+
+.add-option {
+  display: flex;
+  padding: $l-size;
+}
+
+.add-option input {
+  flex-grow: 1;
+  border: none;
+  border-bottom: 0.3rem solid darken($body-bg, 10%);
+  background-color: $body-bg;
+}
+
+.add-option .button {
+  margin-left: $m-size;
+}

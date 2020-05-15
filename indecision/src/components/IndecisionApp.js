@@ -70,12 +70,14 @@ class IndecisionApp extends Component {
             hasOptions={options.length > 0}
             handleDecisionMaking={this.handleDecisionMaking}
           />
-          <Options
-            options={options}
-            handleDeleteOptions={this.handleDeleteOptions}
-            handleDeleteOption={this.handleDeleteOption}
-          />
-          <AddOption handleAddOption={this.handleAddOption} />
+          <div className="widget">
+            <Options
+              options={options}
+              handleDeleteOptions={this.handleDeleteOptions}
+              handleDeleteOption={this.handleDeleteOption}
+            />
+            <AddOption handleAddOption={this.handleAddOption} />
+          </div>
         </div>
         <OptionModal
           selectedOption={selectedOption}
