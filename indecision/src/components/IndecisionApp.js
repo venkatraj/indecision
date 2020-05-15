@@ -65,16 +65,18 @@ class IndecisionApp extends Component {
     return (
       <div>
         <Header subtitle="Put your life in the handles of a computer!" />
-        <Action
-          hasOptions={options.length > 0}
-          handleDecisionMaking={this.handleDecisionMaking}
-        />
-        <Options
-          options={options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
+        <div className="container">
+          <Action
+            hasOptions={options.length > 0}
+            handleDecisionMaking={this.handleDecisionMaking}
+          />
+          <Options
+            options={options}
+            handleDeleteOptions={this.handleDeleteOptions}
+            handleDeleteOption={this.handleDeleteOption}
+          />
+          <AddOption handleAddOption={this.handleAddOption} />
+        </div>
         <OptionModal
           selectedOption={selectedOption}
           closeModal={this.closeModal}
