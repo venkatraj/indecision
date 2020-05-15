@@ -4,7 +4,11 @@ const Action = (props) => {
   const { hasOptions, handleDecisionMaking } = props;
   return (
     <div>
-      <button disabled={!hasOptions} onClick={handleDecisionMaking}>
+      <button
+        className="big-button"
+        disabled={!hasOptions}
+        onClick={handleDecisionMaking}
+      >
         What Should I Do?
       </button>
     </div>
